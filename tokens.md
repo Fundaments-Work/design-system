@@ -410,6 +410,8 @@ Recorded so it is not rediscovered later. None of it is fixed yet.
 | `Theorem/design.md`, `theorem-landing/design.md` | **Fixed.** Both are pointers to this repository now. `Theorem/ds-bundle/guidelines/design.md` is gitignored and regenerates from `Theorem/design.md` |
 | `fundaments-social/01-brand-and-voice.md` | **Fixed.** Typeface section updated to DM Sans/DM Mono |
 | `brand/exports/*.png` | Still rasterised in Inter. Regenerate from the DM Sans lockup |
+| `brand/marks/favicon.svg`, `fundaments-logo.svg`, `fundaments-lockup.svg`, `fundaments-mark-carbon.svg` | Their field is Carbon `#12140f`, which no longer matches any token. The base is `#141416` and the recessed step is `#0d0f0a`. Found while vendoring these files into nepali-wordle; the files themselves are otherwise canonical |
+| `brand/exports/avatar-*.png`, `banner-*.png` | Same Inter rasterisation as above |
 | `brand/marks/theorem-logo.svg` | Fill `#0a0a0a`; the token is `#1c1c1c` |
 | `brand/marks/theorem-app-icon.svg` | Fill `#0a0a0a`, and `rx="100"` — the only rounded corner in the brand kit |
 | `brand/badges/fundaments-badge.svg` | Field `#1e221b`; no token matches it (nearest is `#1e201b`) |
@@ -429,6 +431,8 @@ Specified is not the same as adopted. Current state:
 | `theorem-landing` | adopted | adopted | adopted | adopted | adopted |
 | `Theorem` | adopted | adopted | adopted | adopted | adopted |
 | `Lemma` | n/a — inherits Obsidian | | | | |
+| `akshar-playground` | adopted | adopted | adopted | partial | adopted |
+| `nepali-wordle` | adopted (both themes) | adopted | adopted | adopted | adopted |
 
 Every product now runs the shared base, DM Sans/Mono at two weights,
 radius 0, and the shared motion tokens. Spacing is the one gap: the
