@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 120" width="680" height="120">
+  <title>Fundaments.work Lockup</title>
+  <g transform="translate(10, 10) scale(0.1953125)">
+    <rect width="512" height="512" fill="#12140f"/>
+    <path d="M 208 96 H 96 V 416 H 208 V 364 H 148 V 148 H 208 Z" fill="#c6f135" />
+    <circle cx="256" cy="256" r="44" fill="#c6f135" />
+    <path d="M 304 96 H 416 V 416 H 304 V 364 H 364 V 148 H 304 Z" fill="#c6f135" />
+  </g>
+  <text x="135" y="70" font-family="Inter, -apple-system, sans-serif" font-size="38" font-weight="600" fill="#ffffff" letter-spacing="-0.03em">Fundaments<tspan fill="#c6f135">.work</tspan></text>
+</svg>

@@ -1,0 +1,10 @@
+# Build output and editor noise
+node_modules/
+dist/
+.astro/
+.DS_Store
+
+# Nothing here is secret, but keep local overrides out of the repo
+*.local
+.env
+.env.*
