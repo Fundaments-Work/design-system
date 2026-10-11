@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Theorem — a local-first reader for PDF, EPUB and RSS that writes every highlight to your vault as plain Markdown">
+  <rect width="1200" height="630" fill="#141416"/>
+
+  <!-- construction grid, hairline -->
+  <g stroke="#3d3d42" stroke-width="1">
+    <path d="M0 90H1200M0 540H1200M90 0V630M1110 0V630"/>
+  </g>
+
+  <!-- clear space: exactly one mark height. Box is 3x the mark. -->
+  <rect x="125" y="135" width="330" height="330" fill="none" stroke="#7a7a7a" stroke-width="1" stroke-dasharray="4 6"/>
+
+  <!-- the turnstile on its 24-unit grid, centred in the well at x=290 -->
+  <g transform="translate(207.5 217.5) scale(6.875)">
+    <rect x="4" y="4" width="16" height="4" fill="#e8e6e1"/>
+    <rect x="10" y="8" width="4" height="8" fill="#e8e6e1"/>
+    <rect x="14" y="16" width="4" height="4" fill="#c8b89a"/>
+  </g>
+
+  <text x="540" y="246" font-family="DM Sans" font-size="68" font-weight="300" fill="#e8e6e1" letter-spacing="-2.3">Theorem</text>
+
+  <text x="543" y="298" font-family="DM Mono" font-size="20" fill="#9a9a9a" letter-spacing="0.4">fundaments.work</text>
+
+  <line x1="540" y1="352" x2="1110" y2="352" stroke="#3d3d42" stroke-width="1"/>
+
+  <text x="540" y="404" font-family="DM Sans" font-size="25" font-weight="300" fill="#e8e6e1" letter-spacing="-0.4">Every highlight lands in your vault</text>
+  <text x="540" y="440" font-family="DM Sans" font-size="25" font-weight="300" fill="#e8e6e1" letter-spacing="-0.4">as plain Markdown. No export step.</text>
+
+  <text x="540" y="504" font-family="DM Mono" font-size="17" fill="#c8b89a">PDF · EPUB · RSS · no account · no subscription</text>
+</svg>
