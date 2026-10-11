@@ -15,20 +15,20 @@ Two layers, and the split is the whole idea:
 
 | Layer | Contains | Varies by product? |
 |---|---|---|
-| **Shared** | Radius, hairlines, type families, tracking, spacing, motion | Never |
-| **Values** | Ink, paper, line, surface, state colour | Always |
+| **Base** | Background, surface, text, hairline, radius, type, tracking, spacing, motion | Never |
+| **Accent** | One colour, one meaning | Always |
 
-A product adopts the system by taking the shared layer unchanged and
-supplying its own values. Nothing else is negotiable per product.
+A product adopts the system by taking the base unchanged and supplying
+one accent. Nothing else is negotiable per product.
 
 ### Products in scope
 
-| Product | Values from | Status |
+| Product | Base | Accent |
 |---|---|---|
-| **Theorem** | Its own tokens | Reference implementation |
-| **Fundaments.work** (lab site) | Carbon and lime | Keeps its own palette |
-| **Lemma** | Obsidian's theme variables | **Out of scope — inherits Obsidian** |
-| **Akshar IME** | To be set | Follows the system when it exists |
+| **Theorem** | shared (already ships it) | Stone `#c8b89a` |
+| **Fundaments.work** | shared | Acid lime `#c6f135` |
+| **Lemma** | Obsidian's theme variables | **Out of scope** |
+| **Akshar IME** | shared, when it exists | not yet set |
 
 **Lemma is deliberately outside the system.** It runs inside someone
 else's application and must inherit that application's theme. Its
@@ -53,6 +53,39 @@ Fundaments.work page. This is a decision, not an omission.
   --tracking-body:     -0.01em;
 }
 ```
+
+### One base
+
+**The system has a single base: dark.** Carbon `#12140f`, on the values
+Theorem's app already ships.
+
+```css
+:root {
+  --bg:         #141416;
+  --surface:    #1c1c20;
+  --surface-hi: #28282c;
+  --line:       #3d3d42;
+  --text:       #e8e6e1;
+  --text-60:    #9a9a9a;
+}
+```
+
+Light is a theme inside the system, not a rival to it. A light override
+ships alongside; it is not the default and products do not choose
+between brands.
+
+**Why dark is the base and not light.** Carbon and Theorem's dark were
+already the same palette under two names — background, surface, text and
+muted differ by an RGB distance of 2, 4, 6 and 7 respectively, well
+inside the gap you would get from rounding. Only the hairline genuinely
+diverged (`#282c22` vs `#3d3d42`), and Theorem's is adopted as the shared
+value: 1.72:1 on the base, enough for a decorative boundary.
+
+**Why the accent stays per-product.** An accent only works on the base
+it was chosen for. Lime `#c6f135` scores 14.16:1 on carbon and **1.24:1
+on paper** — unusable on a light surface, the same failure mode as Stone
+at 1.85:1. One base, per-product accent. The accent is the only thing a
+product gets to choose.
 
 ### Radius
 
@@ -102,22 +135,14 @@ never decorates.
 
 ## Values — Theorem
 
-These are what Theorem's app **actually ships**, read from
-`design-tokens.ts` and `design-tokens.css`. Theorem runs a warm neutral
-palette — not the pure greys its marketing pages use. The app is what
-users see, so the app is canonical; see [Known drift](#known-drift).
+Theorem inherits the shared base and chooses Stone as its accent. Its
+dark theme already matches the shared base exactly, so the product needs
+no migration.
 
 ```css
 :root {
-  --ink:      #1c1c1c;   /* text, mark, buttons      */
-  --ink-60:   #6b6b6b;   /* secondary text           */
-  --ink-muted:#9c9c9c;   /* tertiary text — see AA   */
-  --line:     #d4d3ce;   /* hairlines                */
-  --line-soft:#e2e1dd;   /* dividers inside a panel  */
-  --surface:  #f4f3f0;   /* panels                   */
-  --surface-hi:#e8e7e2;  /* hover                    */
-  --paper:    #faf9f7;   /* page background          */
-  --stone:    #c8b89a;   /* state only               */
+  --accent:        #c8b89a;   /* stone — reading progress only  */
+  --accent-ink:    #1a1a1a;   /* ink set on stone                */
 
   --hl-thesis:        #fef08a;
   --hl-method:        #bae6fd;
@@ -128,17 +153,39 @@ users see, so the app is canonical; see [Known drift](#known-drift).
 }
 ```
 
-> **Accent.** Theorem's `--app-accent` defaults to `#000000` and is
-> user-selectable from eight presets. `computeAccentVariants()` derives
-> hover, light and contrast variants at runtime and enforces 4.5:1 against
-> the active background. This is the best mechanism in the system; other
-> products should copy it rather than hard-code an accent.
+> **Accent mechanism.** Theorem's `--app-accent` defaults to `#000000`
+> and is user-selectable from eight presets. `computeAccentVariants()`
+> derives hover, light and contrast variants at runtime and enforces
+> 4.5:1 against the active background. This is the best mechanism in the
+> system; other products should copy it rather than hard-code an accent.
+
+### Light theme
+
+Light is an override, not a second brand. Theorem's existing light theme
+keeps its values and its name.
+
+```css
+.theme-light {
+  --app-bg:               #faf9f7;   /* page background */
+  --app-surface:          #f4f3f0;   /* panels */
+  --app-surface-elevated: #ffffff;
+  --app-surface-muted:    #e8e7e2;
+  --app-surface-variant:  #e0dfda;
+  --app-surface-hover:    #d9d8d3;
+  --app-border:           #d4d3ce;   /* hairlines */
+  --app-border-subtle:    #e2e1dd;
+  --app-text-primary:     #1c1c1c;   /* text, mark */
+  --app-text-secondary:   #6b6b6b;   /* secondary text */
+  --app-text-muted:       #9c9c9c;   /* never text — see AA */
+  --app-text-inverse:     #ffffff;
+}
+```
 
 ### Dark theme
 
-Theorem ships a dark theme, applied by `applyAppTheme()`. These are the
-canonical dark values; any earlier proposal that differed has been
-discarded.
+Theorem's dark theme is the shared base. `applyAppTheme()` writes these
+at runtime; the values are identical to the shared layer, so this is
+recorded for reference rather than as a separate palette.
 
 ```css
 .theme-dark {
@@ -186,52 +233,47 @@ Wherever Stone appears it carries a DM Mono label beside it.
 
 ## Values — Fundaments.work
 
-The lab keeps its own palette. Carbon and lime are its identity on the
-web and in every social frame, and they are not being retired.
+The lab takes the shared base unchanged. It chooses one thing: the accent.
 
 ```css
 :root {
-  --carbon:      #12140f;   /* background */
-  --carbon-deep: #0d0f0a;   /* recessed sections */
-  --line:        #282c22;   /* hairlines */
-  --lime:        #c6f135;   /* mark, one action per view */
-  --sage:        #b3d17a;   /* secondary accent, sparing */
-  --bone:        #e3e3da;   /* text */
-  --slate:       #9ca190;   /* muted text */
+  --accent:        #c6f135;   /* lime — mark, one action per view  */
+  --accent-hover:  #d6ff47;
+  --accent-ink:    #293500;   /* ink set on lime                  */
+  --recessed:      #0d0f0a;   /* deep carbon, inset panels        */
+  --accent-2:      #b3d17a;   /* sage — secondary, used sparingly */
 }
 ```
 
-It takes the shared layer unchanged: radius 0, hairlines, DM Sans and
-DM Mono, the spacing scale, the motion durations.
+The base it inherits: `--bg #141416`, `--surface #1c1c20`,
+`--text #e8e6e1`, `--line #3d3d42`.
+
+Carbon and lime remain the lab's identity on the web and in every social
+frame. Nothing is retired — the values are simply named as slots rather
+than as a private palette, so they now sit in the same system as
+Theorem's.
 
 **Lime is one signal per frame.** Never two competing lime elements on
 one screen. Carbon carries almost everything else.
 
-### Name collision
+### The `--line` collision, resolved
 
-Both palettes define a `line` token with different values — `#e5e5e5` on
-Theorem, `#282c22` on the lab. **If both ever load on one page, prefix
-each by product:** `--theorem-line`, `--fundaments-line`. This is not
-hypothetical; the two sites share a build lineage.
+The two palettes previously defined `line` differently — `#e5e5e5` for
+Theorem's light theme and `#282c22` for the lab. Under one base this is
+gone: `--line` is `#3d3d42` everywhere, measured at 1.72:1 on the base
+and 1.62:1 on the surface.
 
----
-
-## Name collision: `--line`
-
-| Context | Token | Value |
-|---|---|---|
-| Theorem | `--line` | `#e5e5e5` |
-| Fundaments.work | `--line` | `#282c22` |
-
-Prefix by product when they meet. Do not redefine one in terms of the
-other.
+Theorem's light theme keeps its own hairline, `#d4d3ce`, inside
+`.theme-light`. Light is scoped to a theme block, so it can no longer
+collide with another product's tokens on the same page. **The
+prefix-by-product workaround is no longer needed.**
 
 ---
 
 ## State colour
 
-Each product has exactly **one** state colour and exactly **one** meaning.
-It is not decorative and it is never a second accent.
+Each product has exactly **one** accent and exactly **one** meaning for
+it. It is not decorative and it is never a second accent.
 
 - **Theorem** — Stone `#c8b89a`, reading progress only.
 - **Fundaments.work** — Acid lime `#c6f135`, the mark and one action per
@@ -272,7 +314,8 @@ No build step is required. Read the values above and apply them.
 
 ### Theorem
 
-Already compliant. Its token names are the system's names. No migration.
+Already compliant. Its dark theme is the shared base, so there is nothing
+to migrate. Its light theme stays as a theme override.
 
 ### Fundaments.work
 
@@ -280,9 +323,18 @@ Already compliant. Its token names are the system's names. No migration.
    "JetBrains Mono"` with DM Mono.
 2. Rebalance the type hierarchy: the current headings run 600–700 at
    −4% to −6%, which the system replaces with weight 300 and −3%.
-3. Delete the Inter and JetBrains Mono `@fontsource` dependencies once
+3. Collapse five easing curves into the shared one, and adopt
+   `--duration-fast|normal|slow`.
+4. Move off-scale px literals onto the spacing scale.
+5. Rename the palette to slot names: `--carbon` → `--bg`, `--bone` →
+   `--text`, `--slate` → `--text-60`, `--line` → the shared `#3d3d42`.
+   Lime and sage become `--accent` and `--accent-2`.
+6. Delete the Inter and JetBrains Mono `@fontsource` dependencies once
    step 1 lands, and regenerate the brand exports in `brand/exports`,
    which are rasterised in Inter today.
+
+The base itself needs no change — the lab is already on carbon, which is
+within 2/255 of the shared background.
 
 ### Lemma
 
@@ -317,11 +369,14 @@ Recorded so it is not rediscovered later. None of it is fixed yet.
 
 Specified is not the same as adopted. Current state:
 
-| Shared layer | Radius | Type | Spacing | Motion |
-|---|---|---|---|---|
-| `fundaments-landing` | adopted | **not adopted** | **not adopted** | **not adopted** |
-| `theorem-landing` | adopted | adopted | **not adopted** | **not adopted** |
-| `Theorem` | adopted | adopted | adopted | adopted |
-| `Lemma` | n/a — inherits Obsidian | | | |
+| Shared layer | Base | Radius | Type | Spacing | Motion |
+|---|---|---|---|---|---|
+| `fundaments-landing` | **near** | adopted | **not adopted** | **not adopted** | **not adopted** |
+| `theorem-landing` | **not adopted** | adopted | adopted | **not adopted** | **not adopted** |
+| `Theorem` | adopted | adopted | adopted | adopted | adopted |
+| `Lemma` | n/a — inherits Obsidian | | | | |
 
-Radius is the only rule every surface currently follows.
+The lab's base is already within 2/255 of the shared background, so its
+real gap is typography, spacing and motion. `theorem-landing` is the
+outlier: it publishes a light palette that no longer exists in the
+system.

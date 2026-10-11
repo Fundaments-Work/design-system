@@ -103,32 +103,42 @@ Ink and paper carry everything. Stone reports state only. The six
 highlight colours each carry one meaning, so exported notes stay
 consistent.
 
-### Light theme
+### One base, dark
 
-Theorem's app runs a warm neutral, not a pure grey. These are the shipped
-values.
-
-| Token | Value | Role |
-|---|---|---|
-| Ink | `#1c1c1c` | Text, mark, buttons |
-| Ink 60 | `#6b6b6b` | Secondary text |
-| Ink muted | `#9c9c9c` | Disabled and decorative only — fails AA |
-| Line | `#d4d3ce` | Hairlines |
-| Surface | `#f4f3f0` | Panels |
-| Paper | `#faf9f7` | Page background |
-| Stone | `#c8b89a` | State only |
-
-### Dark theme
+Every product shares one base. Products choose an accent, never a
+palette.
 
 | Token | Value | Role |
 |---|---|---|
 | Background | `#141416` | Page background |
 | Surface | `#1c1c20` | Panels |
 | Surface raised | `#28282c` | Raised panels |
+| Hover | `#454549` | Hover |
 | Line | `#3d3d42` | Hairlines |
 | Text | `#e8e6e1` | Text, mark |
 | Muted | `#9a9a9a` | Secondary text |
-| Stone | `#c8b89a` | Same in both themes |
+
+### Light theme
+
+Light is a theme inside the system, not a second brand. Theorem's
+override keeps its warm neutral.
+
+| Token | Value | Role |
+|---|---|---|
+| Paper | `#faf9f7` | Page background |
+| Surface | `#f4f3f0` | Panels |
+| Line | `#d4d3ce` | Hairlines |
+| Ink | `#1c1c1c` | Text, mark |
+| Ink 60 | `#6b6b6b` | Secondary text |
+| Ink muted | `#9c9c9c` | Disabled only — fails AA |
+
+### Accent
+
+| Product | Accent | Meaning |
+|---|---|---|
+| Theorem | Stone `#c8b89a` | Reading progress only |
+| Fundaments.work | Acid lime `#c6f135` | Mark, one action per view |
+| Lemma | none | Obsidian owns it |
 
 ### Highlight taxonomy
 
@@ -145,21 +155,28 @@ values.
 
 | Pair | Ratio | |
 |---|---|---|
+| Text on base | 14.75:1 | AAA |
+| Muted on base | 6.54:1 | AA |
+| **Lime on base** | **14.16:1** | AAA |
+| **Stone on base** | **9.44:1** | AAA |
+| Line on base | 1.72:1 | decorative |
 | Ink on Paper | 16.20:1 | AAA |
 | Ink 60 on Paper | 5.06:1 | AA |
 | Ink muted on Paper | 2.61:1 | **Fails AA** |
-| Dark text on Night | 14.75:1 | AAA |
-| Dark muted on Night | 6.54:1 | AA |
-| Stone on Night | 9.44:1 | AAA |
-| Stone on Paper | 1.85:1 | **Fails AA** |
+| **Lime on Paper** | **1.24:1** | **Fails AA** |
+| **Stone on Paper** | **1.85:1** | **Fails AA** |
 
-Two rules, both load-bearing:
+Three rules, all load-bearing:
+
+**Accents never cross onto the light base.** Lime scores 1.24:1 and Stone
+1.85:1 on paper. Both are dark-base accents. A light theme must use an
+accent chosen for it, or none.
 
 **Ink muted is never text.** It cannot carry meaning at 2.61:1. Use Ink 60
 for anything a reader must be able to read.
 
-**Stone is never text on a light surface.** Pair it with a mono label,
-every time.
+**Stone is never text.** On the base it passes; it still always carries a
+mono label, because state is never colour alone.
 
 ### Fundaments.work
 

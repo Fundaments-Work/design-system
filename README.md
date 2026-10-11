@@ -26,27 +26,30 @@ brand/
   exports/  12 raster derivatives — OG, banners, avatars, Theorem social
 ```
 
-## Two layers
+## One base, one accent
 
-**Shared** — radius, hairlines, type families, tracking, spacing, motion.
-Identical everywhere, never negotiated per product.
+**Base** — background, surface, text, hairline, radius, type, tracking,
+spacing, motion. Dark. Identical everywhere, never negotiated per
+product.
 
-**Values** — ink, paper, line, surface, state colour. Each product supplies
-its own.
+**Accent** — one colour, one meaning. The only thing a product chooses.
 
-| Product | Values |
+| Product | Accent |
 |---|---|
-| Theorem | Ink and paper, light and dark |
-| Fundaments.work | Carbon and lime |
+| Theorem | Stone `#c8b89a` — reading progress |
+| Fundaments.work | Acid lime `#c6f135` — mark, one action |
 | Lemma | **Out of scope** — inherits Obsidian |
 | Akshar IME | To be set |
 
+Light is a theme inside the system, not a rival to it.
+
 ## The short version
 
+- One dark base for every product — `#141416`, never negotiated
 - Corner radius is `0`, on every element, without exception
 - DM Sans 300/400 for the interface, DM Mono 300/400 for data
 - Hierarchy from size and colour, never from extra weights
-- One state colour per product, one meaning, always labelled
+- One accent per product, one meaning, always labelled
 - One mark height of clear space, for every mark
 - The credit line is `Made by Fundaments.work`, DM Mono, 0.35 × wordmark
 
