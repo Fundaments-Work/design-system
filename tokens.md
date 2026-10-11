@@ -306,6 +306,46 @@ colour: do not swap them, and do not use them decoratively.
 > `design-tokens.ts`. The six colours are identical; the labels are not.
 > This needs one canonical answer before the tokens ship.
 
+### Highlight washes
+
+**A highlight is never a solid fill behind base-coloured text.** These
+colours are pale and saturated, so a solid one behind the base text
+colour scores **1.07:1** — effectively invisible. Measured on
+`theorem-landing`, where three separate components had the same defect.
+
+```css
+/* Dark base — wash toward the highlight */
+--hl-thesis-wash: color-mix(in srgb, #fef08a 30%, transparent);
+
+/* Light base — wash toward ink */
+--hl-thesis-wash: color-mix(in srgb, #141416 20%, transparent);
+```
+
+| | Wash | Text | Ratio |
+|---|---|---|---|
+| Dark | 30% highlight over base | `--color-text-strong` | 7.43:1 |
+| Light | 20% ink over base | `--color-text` | 10.52:1 |
+
+**Light washes toward ink, not toward the colour.** A 30% yellow wash
+over paper measures 1.04:1 against the base — on light the highlight
+would be *invisible* rather than illegible, which is the worse failure.
+
+Swatch buttons keep the **full** colour, so the six stay distinguishable
+as chips. The wash is only what sits behind running text.
+
+### Text selection
+
+Selection has the same constraint and gets its own tokens, because it
+must read as a block rather than a tint.
+
+| | Background | Ink | Ratio |
+|---|---|---|---|
+| Dark | 40% highlight over base | `--color-text-strong` | 5.32:1 |
+| Light | solid `#fef08a` | `#1c1c1c` | 14.64:1 |
+
+Light keeps a solid highlight because ink on yellow is strong; dark
+cannot, since white text on a pale fill is what fails.
+
 ---
 
 ## How a product adopts this
@@ -319,22 +359,30 @@ to migrate. Its light theme stays as a theme override.
 
 ### Fundaments.work
 
-1. Replace `--font-sans: "Inter"` with DM Sans, and `--font-mono:
-   "JetBrains Mono"` with DM Mono.
-2. Rebalance the type hierarchy: the current headings run 600–700 at
-   −4% to −6%, which the system replaces with weight 300 and −3%.
-3. Collapse five easing curves into the shared one, and adopt
-   `--duration-fast|normal|slow`.
-4. Move off-scale px literals onto the spacing scale.
-5. Rename the palette to slot names: `--carbon` → `--bg`, `--bone` →
-   `--text`, `--slate` → `--text-60`, `--line` → the shared `#3d3d42`.
-   Lime and sage become `--accent` and `--accent-2`.
-6. Delete the Inter and JetBrains Mono `@fontsource` dependencies once
-   step 1 lands, and regenerate the brand exports in `brand/exports`,
-   which are rasterised in Inter today.
+**Done.** Adopted in `fundaments-landing`.
 
-The base itself needs no change — the lab is already on carbon, which is
-within 2/255 of the shared background.
+1. ✅ Replaced Inter and JetBrains Mono with DM Sans and DM Mono.
+2. ✅ Rebalanced the type hierarchy: headings were 600–700 at −4% to −6%,
+   now 300 at −3%, with 400 for body.
+3. ✅ Collapsed five easing curves into the shared one with the three
+   standard durations.
+4. ✅ Renamed the palette to slot names. Lime and sage became `--accent`
+   and `--accent-2`.
+5. ✅ Removed the unused `@fontsource` dependencies and stopped shipping
+   the two variable font files.
+6. ⬜ Regenerate the brand exports in `brand/exports`, which are still
+   rasterised in Inter.
+7. ⬜ Off-scale px literals remain — the scale is adopted in the tokens but
+   a handful of component paddings still sit outside it.
+
+The base itself needed no change — the lab was already on carbon, within
+2/255 of the shared background.
+
+### theorem-landing
+
+**Done.** Adopted in `theorem-landing`: shared base, DM Sans/DM Mono, two
+weights, shared motion tokens, and the highlight and selection fixes
+below.
 
 ### Lemma
 
@@ -355,14 +403,20 @@ Recorded so it is not rediscovered later. None of it is fixed yet.
 
 | Where | Issue |
 |---|---|
-| `theorem-landing/src/styles/global.css` | Uses neutral greys `#1a1a1a` / `#e5e5e5` / `#ffffff`; the app ships warm `#1c1c1c` / `#d4d3ce` / `#faf9f7`. Two palettes for one product — the marketing pages are the outlier, not the app |
-| `theorem-landing` `design.md`, `Theorem/design.md`, `Theorem/ds-bundle/guidelines/design.md` | Three revisions of one document, disagreeing on fonts, motion and ink |
+| `theorem-landing` highlight + selection | **Fixed.** Pale solid fills behind base text scored 1.07:1; now translucent washes. See Highlight washes |
+| `theorem-landing` focus ring | **Fixed.** `--color-text` is 1.19:1 on light paper. Now a `--focus-ring` token that inverts per theme |
+| `theorem-landing` `color-scheme` | **Fixed.** Declared `light` while the page is dark |
+| `fundaments-landing` palette + type + motion | **Fixed.** Adopted the shared base, DM Sans/Mono, two weights, shared motion |
+| `Theorem/design.md`, `theorem-landing/design.md` | **Fixed.** Both are pointers to this repository now. `Theorem/ds-bundle/guidelines/design.md` is gitignored and regenerates from `Theorem/design.md` |
+| `fundaments-social/01-brand-and-voice.md` | **Fixed.** Typeface section updated to DM Sans/DM Mono |
+| `brand/exports/*.png` | Still rasterised in Inter. Regenerate from the DM Sans lockup |
 | `brand/marks/theorem-logo.svg` | Fill `#0a0a0a`; the token is `#1c1c1c` |
-| `brand/marks/theorem-app-icon.svg` | Fill `#0a0a0a`, mark `#fafaf8`, and `rx="100"` — the only rounded corner in the brand kit |
+| `brand/marks/theorem-app-icon.svg` | Fill `#0a0a0a`, and `rx="100"` — the only rounded corner in the brand kit |
 | `brand/badges/fundaments-badge.svg` | Field `#1e221b`; no token matches it (nearest is `#1e201b`) |
-| `fundaments-landing/src/styles/global.css` | Still Inter + JetBrains Mono at weights 600–650. No `--duration-*` tokens; five separate easing curves; roughly half its px literals are off the spacing scale |
+| `fundaments-landing` spacing | A handful of component paddings still sit off the 4px scale |
 | `Lemma/styles.css` | Four hardcoded Tailwind hexes in swipe shadows that contradict the rating colours — Easy swipes blue but rates cyan |
 | `Lemma/src/ui/StatsModal.ts` | Chart.js is handed raw `var(--interactive-accent)` strings; canvas cannot resolve `var()`, so charts fall back to defaults |
+| `Theorem` highlight labels | Runtime says Important/Key Idea/Interesting/Critical/Action/Beautiful; the system says the six meanings above |
 | `fundaments-landing/README.md`, `theorem-landing/README.md` | Document Hugo; both projects are Astro |
 
 ## Adoption status
@@ -371,12 +425,11 @@ Specified is not the same as adopted. Current state:
 
 | Shared layer | Base | Radius | Type | Spacing | Motion |
 |---|---|---|---|---|---|
-| `fundaments-landing` | **near** | adopted | **not adopted** | **not adopted** | **not adopted** |
-| `theorem-landing` | **not adopted** | adopted | adopted | **not adopted** | **not adopted** |
+| `fundaments-landing` | adopted | adopted | adopted | partial | adopted |
+| `theorem-landing` | adopted | adopted | adopted | adopted | adopted |
 | `Theorem` | adopted | adopted | adopted | adopted | adopted |
 | `Lemma` | n/a — inherits Obsidian | | | | |
 
-The lab's base is already within 2/255 of the shared background, so its
-real gap is typography, spacing and motion. `theorem-landing` is the
-outlier: it publishes a light palette that no longer exists in the
-system.
+Every product now runs the shared base, DM Sans/Mono at two weights,
+radius 0, and the shared motion tokens. Spacing is the one gap: the
+scale is declared but a few component paddings still sit off it.
