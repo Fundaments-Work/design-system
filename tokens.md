@@ -102,16 +102,22 @@ never decorates.
 
 ## Values — Theorem
 
-These are what Theorem ships today, read from its token source.
+These are what Theorem's app **actually ships**, read from
+`design-tokens.ts` and `design-tokens.css`. Theorem runs a warm neutral
+palette — not the pure greys its marketing pages use. The app is what
+users see, so the app is canonical; see [Known drift](#known-drift).
 
 ```css
 :root {
-  --ink:      #1a1a1a;   /* text, mark, buttons */
-  --ink-60:   #666666;   /* secondary text */
-  --line:     #e5e5e5;   /* hairlines */
-  --surface:  #fafafa;   /* panels, hover */
-  --paper:    #ffffff;   /* page background */
-  --stone:    #c8b89a;   /* state only */
+  --ink:      #1c1c1c;   /* text, mark, buttons      */
+  --ink-60:   #6b6b6b;   /* secondary text           */
+  --ink-muted:#9c9c9c;   /* tertiary text — see AA   */
+  --line:     #d4d3ce;   /* hairlines                */
+  --line-soft:#e2e1dd;   /* dividers inside a panel  */
+  --surface:  #f4f3f0;   /* panels                   */
+  --surface-hi:#e8e7e2;  /* hover                    */
+  --paper:    #faf9f7;   /* page background          */
+  --stone:    #c8b89a;   /* state only               */
 
   --hl-thesis:        #fef08a;
   --hl-method:        #bae6fd;
@@ -122,20 +128,32 @@ These are what Theorem ships today, read from its token source.
 }
 ```
 
+> **Accent.** Theorem's `--app-accent` defaults to `#000000` and is
+> user-selectable from eight presets. `computeAccentVariants()` derives
+> hover, light and contrast variants at runtime and enforces 4.5:1 against
+> the active background. This is the best mechanism in the system; other
+> products should copy it rather than hard-code an accent.
+
 ### Dark theme
 
-Theorem ships a dark theme. Its values are the canonical ones for the
-system; any earlier proposal that differed has been discarded.
+Theorem ships a dark theme, applied by `applyAppTheme()`. These are the
+canonical dark values; any earlier proposal that differed has been
+discarded.
 
 ```css
 .theme-dark {
-  --app-bg:              #141416;   /* page background */
-  --app-surface:         #1c1c20;   /* panels, hover */
-  --app-surface-elevated:#28282c;
-  --app-border:          #3d3d42;   /* hairlines */
-  --app-border-subtle:   #323236;
-  --app-text-primary:    #e8e6e1;   /* text, mark */
-  --app-text-secondary:  #9a9a9a;   /* secondary text */
+  --app-bg:               #141416;   /* page background */
+  --app-surface:          #1c1c20;   /* panels */
+  --app-surface-elevated: #28282c;   /* raised panels */
+  --app-surface-muted:    #353539;
+  --app-surface-variant:  #3d3d42;
+  --app-surface-hover:    #454549;   /* hover */
+  --app-border:           #3d3d42;   /* hairlines */
+  --app-border-subtle:    #323236;
+  --app-text-primary:     #e8e6e1;   /* text, mark */
+  --app-text-secondary:   #9a9a9a;   /* secondary text */
+  --app-text-muted:       #7a7a7a;   /* tertiary text */
+  --app-text-inverse:     #141416;
 }
 ```
 
@@ -143,17 +161,26 @@ Stone is the same in both themes.
 
 ### Contrast
 
-| Pair | Ratio |
-|---|---|
-| Ink on Paper | 17.4:1 |
-| Ink 60 on Paper | 5.7:1 |
-| Dark text on dark background | 15.9:1 |
-| Dark muted on dark background | 6.6:1 |
-| Stone on dark background | 9.5:1 |
-| **Stone on Paper** | **1.95:1** |
+Recomputed against these values, not the marketing page's greys.
 
-Stone on Paper fails text contrast. It is never used for text. Wherever
-Stone appears, it carries a DM Mono label beside it.
+| Pair | Ratio | |
+|---|---|---|
+| Ink on Paper | 16.20:1 | AAA |
+| Ink 60 on Paper | 5.06:1 | AA |
+| Ink muted on Paper | **2.61:1** | **Fails AA** |
+| Dark text on Night | 14.75:1 | AAA |
+| Dark muted on Night | 6.54:1 | AA |
+| Stone on Night | 9.44:1 | AAA |
+| **Stone on Paper** | **1.85:1** | **Fails AA** |
+
+Two rules follow, and both are enforced in the code:
+
+**Ink muted is never text.** At 2.61:1 it cannot carry meaning. It is for
+disabled states and decorative rules only. Theorem's own components use
+`--app-text-secondary` for anything a reader must be able to read.
+
+**Stone is never text on a light surface.** At 1.85:1 it fails outright.
+Wherever Stone appears it carries a DM Mono label beside it.
 
 ---
 
@@ -276,9 +303,25 @@ Recorded so it is not rediscovered later. None of it is fixed yet.
 
 | Where | Issue |
 |---|---|
-| `brand/marks/theorem-logo.svg` | Fill `#0a0a0a`; the token is `#1a1a1a` |
-| `brand/marks/theorem-app-icon.svg` | `rx="100"` — the only rounded corner in the brand kit |
-| `brand/badges/fundaments-badge.svg` | `#1e221b`; no token matches it (closest is `--carbon-3 #1e201b`) |
+| `theorem-landing/src/styles/global.css` | Uses neutral greys `#1a1a1a` / `#e5e5e5` / `#ffffff`; the app ships warm `#1c1c1c` / `#d4d3ce` / `#faf9f7`. Two palettes for one product — the marketing pages are the outlier, not the app |
+| `theorem-landing` `design.md`, `Theorem/design.md`, `Theorem/ds-bundle/guidelines/design.md` | Three revisions of one document, disagreeing on fonts, motion and ink |
+| `brand/marks/theorem-logo.svg` | Fill `#0a0a0a`; the token is `#1c1c1c` |
+| `brand/marks/theorem-app-icon.svg` | Fill `#0a0a0a`, mark `#fafaf8`, and `rx="100"` — the only rounded corner in the brand kit |
+| `brand/badges/fundaments-badge.svg` | Field `#1e221b`; no token matches it (nearest is `#1e201b`) |
+| `fundaments-landing/src/styles/global.css` | Still Inter + JetBrains Mono at weights 600–650. No `--duration-*` tokens; five separate easing curves; roughly half its px literals are off the spacing scale |
 | `Lemma/styles.css` | Four hardcoded Tailwind hexes in swipe shadows that contradict the rating colours — Easy swipes blue but rates cyan |
 | `Lemma/src/ui/StatsModal.ts` | Chart.js is handed raw `var(--interactive-accent)` strings; canvas cannot resolve `var()`, so charts fall back to defaults |
 | `fundaments-landing/README.md`, `theorem-landing/README.md` | Document Hugo; both projects are Astro |
+
+## Adoption status
+
+Specified is not the same as adopted. Current state:
+
+| Shared layer | Radius | Type | Spacing | Motion |
+|---|---|---|---|---|
+| `fundaments-landing` | adopted | **not adopted** | **not adopted** | **not adopted** |
+| `theorem-landing` | adopted | adopted | **not adopted** | **not adopted** |
+| `Theorem` | adopted | adopted | adopted | adopted |
+| `Lemma` | n/a — inherits Obsidian | | | |
+
+Radius is the only rule every surface currently follows.

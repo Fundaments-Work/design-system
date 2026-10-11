@@ -105,13 +105,17 @@ consistent.
 
 ### Light theme
 
+Theorem's app runs a warm neutral, not a pure grey. These are the shipped
+values.
+
 | Token | Value | Role |
 |---|---|---|
-| Ink | `#1a1a1a` | Text, mark, buttons |
-| Ink 60 | `#666666` | Secondary text |
-| Line | `#e5e5e5` | Hairlines |
-| Surface | `#fafafa` | Panels, hover |
-| Paper | `#ffffff` | Page background |
+| Ink | `#1c1c1c` | Text, mark, buttons |
+| Ink 60 | `#6b6b6b` | Secondary text |
+| Ink muted | `#9c9c9c` | Disabled and decorative only — fails AA |
+| Line | `#d4d3ce` | Hairlines |
+| Surface | `#f4f3f0` | Panels |
+| Paper | `#faf9f7` | Page background |
 | Stone | `#c8b89a` | State only |
 
 ### Dark theme
@@ -119,7 +123,8 @@ consistent.
 | Token | Value | Role |
 |---|---|---|
 | Background | `#141416` | Page background |
-| Surface | `#1c1c20` | Panels, hover |
+| Surface | `#1c1c20` | Panels |
+| Surface raised | `#28282c` | Raised panels |
 | Line | `#3d3d42` | Hairlines |
 | Text | `#e8e6e1` | Text, mark |
 | Muted | `#9a9a9a` | Secondary text |
@@ -138,16 +143,23 @@ consistent.
 
 ### Contrast
 
-| Pair | Ratio |
-|---|---|
-| Ink on Paper | 17.4:1 |
-| Ink 60 on Paper | 5.7:1 |
-| Dark text on dark background | 15.9:1 |
-| Dark muted on dark background | 6.6:1 |
-| Stone on dark background | 9.5:1 |
-| Stone on Paper | 1.95:1 |
+| Pair | Ratio | |
+|---|---|---|
+| Ink on Paper | 16.20:1 | AAA |
+| Ink 60 on Paper | 5.06:1 | AA |
+| Ink muted on Paper | 2.61:1 | **Fails AA** |
+| Dark text on Night | 14.75:1 | AAA |
+| Dark muted on Night | 6.54:1 | AA |
+| Stone on Night | 9.44:1 | AAA |
+| Stone on Paper | 1.85:1 | **Fails AA** |
 
-Stone on Paper is never text. Pair it with a mono label.
+Two rules, both load-bearing:
+
+**Ink muted is never text.** It cannot carry meaning at 2.61:1. Use Ink 60
+for anything a reader must be able to read.
+
+**Stone is never text on a light surface.** Pair it with a mono label,
+every time.
 
 ### Fundaments.work
 
