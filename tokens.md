@@ -28,7 +28,6 @@ one accent. Nothing else is negotiable per product.
 | **Theorem** | shared (already ships it) | Stone `#c8b89a` |
 | **Fundaments.work** | shared | Acid lime `#c6f135` |
 | **Lemma** | Obsidian's theme variables | **Out of scope** |
-| **Akshar IME** | shared, when it exists | not yet set |
 
 **Lemma is deliberately outside the system.** It runs inside someone
 else's application and must inherit that application's theme. Its
@@ -279,7 +278,6 @@ it. It is not decorative and it is never a second accent.
 - **Fundaments.work** — Acid lime `#c6f135`, the mark and one action per
   view.
 - **Lemma** — none in-app. Obsidian owns its accent.
-- **Akshar IME** — not yet set.
 
 State colour is always paired with a text label. Never state by colour
 alone.

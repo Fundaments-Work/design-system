@@ -39,7 +39,6 @@ product.
 | Theorem | Stone `#c8b89a` — reading progress |
 | Fundaments.work | Acid lime `#c6f135` — mark, one action |
 | Lemma | **Out of scope** — inherits Obsidian |
-| Akshar IME | To be set |
 
 Light is a theme inside the system, not a rival to it.
 

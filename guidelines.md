@@ -35,7 +35,6 @@ product chooses only its mark, one state colour and its name.
 | Fundaments.work | The lab | Acid lime | Dark (Carbon) |
 | Theorem | Reading | Stone, reading progress | Light |
 | Lemma | Flashcards, spaced repetition | None in-app — Obsidian owns it | Inherits Obsidian |
-| Akshar IME | Multilingual input | Not yet set | Follows the system |
 
 The lab site keeps carbon, lime and the system. That question is settled:
 the lab's palette is a value set, and the system is the layer above it.
@@ -92,7 +91,7 @@ each time.
 |---|---|---|
 | The lab | Fundaments.work | Fundaments, Fundaments Work, Fundaments Lab |
 | Describing it | an independent lab | studio, agency, company |
-| Products | Theorem, Lemma, Akshar IME | Theorem App, AksharIME |
+| Products | Theorem, Lemma | Theorem App |
 | Credit sentence | Made by Fundaments.work | Made by Fundaments |
 
 ---
@@ -306,7 +305,6 @@ Settled. Recorded here so the reasoning survives, not just the outcome.
   them Important / Key Idea / Interesting / Critical / Action / Beautiful
   while this document says Core thesis / Method / Agreement or fact / Quote
   / Question / Contradiction. One canonical set is needed.
-- **Akshar IME** has no mark on the 24 grid and no state colour.
 - **Lemma** has no mark on the 24 grid.
 - **Licensing.** Whether MIT and CC-BY 4.0 cover the marks is unverified.
   The assumption here is that they do not.
