@@ -18,6 +18,7 @@ reference only.
 | `fundaments-logo.svg` | Aperture on a full-bleed carbon field. |
 | `fundaments-lockup.svg` | Aperture plus the `fundaments.work` wordmark. |
 | `favicon.svg` | Aperture, carbon field, lime mark. |
+| `theorem-favicon.svg` | Theorem's favicon: the T in Ink on the dark base, square. The source for every Theorem raster icon. |
 | `theorem-logo.svg` | Theorem's turnstile, 24-unit grid. |
 | `theorem-app-icon.svg` | Theorem's turnstile on a rounded app-icon field. |
 
