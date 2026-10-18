@@ -61,25 +61,26 @@ beyond it.
 
 ## Exports
 
-Raster derivatives for social and web. These are **generated from the
-current typography**, which the system has since changed — see the note
-below.
+Raster derivatives for social and web, rendered from the SVG sources that sit
+next to them, in DM Sans and DM Mono at 300 and 400. Re-render a PNG from its
+SVG whenever the SVG changes; never edit a PNG by hand.
 
-- `exports/og-1200x630.png`
-- `exports/theorem-social.png`
-- `exports/banner-{x-1500x500,linkedin-1584x396,facebook-820x312}.png`
-- `exports/avatar-{128,200,320,400,512,800,1024}.png`
+- `exports/og-fundaments-1200x630.png` from `og-fundaments.svg`
+- `exports/og-theorem-1200x630.png` from `og-theorem.svg`
+- `exports/theorem-social.png` from `theorem-social.svg`
+- `exports/banner-{x-1500x500,linkedin-1584x396,facebook-820x312}.png` from the matching `.svg`
+- `exports/avatar-{128,200,320,400,512,800,1024}.png` from `marks/fundaments-logo.svg`
 
 ---
 
 ## Known drift in these files
 
-Recorded so it is not rediscovered. None of it is fixed yet — fixing any
-of it changes a shipped asset and needs a decision.
+Recorded so it is not rediscovered.
 
 | File | Issue |
 |---|---|
-| `theorem-logo.svg` | Fill is `#0a0a0a`. The system token is Ink `#1c1c1c`. |
-| `theorem-app-icon.svg` | Fill is `#0a0a0a`, and the field carries `rx="100"` — the only rounded corner anywhere in the brand kit, against the zero-radius rule. Its mark is `#fafaf8`; the system paper is `#ffffff`. |
-| `fundaments-badge.svg`, `telemetry-badge.svg` | Field is `#1e221b`, which matches no token. The nearest is a carbon step at `#1e201b`. |
-| `exports/*.png` | Rasterised in Inter. The system now specifies DM Sans, so these are stale until regenerated. |
+| `theorem-logo.svg` | **Fixed.** Fill is now Ink `#1c1c1c`, the system token (was `#0a0a0a`). |
+| `theorem-app-icon.svg` | **Fixed.** The field is square on the base `#141416` and the mark is `#e8e6e1` (was `rx="100"`, `#0a0a0a` and `#fafaf8`). |
+| `fundaments-badge.svg`, `telemetry-badge.svg` | **Fixed.** The telemetry field is now the Surface token `#1c1c20` (was `#1e221b`, which matched no token). |
+| `fundaments-lockup.svg` | **Fixed.** Set in DM Sans 300 on Ink (was Inter 600 on white). |
+| `exports/*.png` | **Fixed.** Re-rendered from SVG sources in DM Sans and DM Mono. |

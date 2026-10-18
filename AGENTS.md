@@ -79,8 +79,5 @@ release notes) still follow the lab's rules.
 - [`Fundaments-Work/content`](../content) — shared machine-readable facts across
   products (support channels today). Unrelated to visual design; do not put
   tokens there.
-- `Theorem/ds-bundle/` — the packaged TheoremUI React kit. Produced by
-  Theorem's own `.ds-sync/` pipeline (DesignSync-driven, agent-graded). Its
-  verdict schema v2 is a CI contract: **additive changes only**.
 - `Theorem/design.md` and `theorem-landing/design.md` are pointers to this
   repository, not independent copies. Do not edit them as if they were.

@@ -6,5 +6,5 @@
     <circle cx="256" cy="256" r="44" fill="#c6f135" />
     <path d="M 304 96 H 416 V 416 H 304 V 364 H 364 V 148 H 304 Z" fill="#c6f135" />
   </g>
-  <text x="135" y="70" font-family="Inter, -apple-system, sans-serif" font-size="38" font-weight="600" fill="#ffffff" letter-spacing="-0.03em">Fundaments<tspan fill="#c6f135">.work</tspan></text>
+  <text x="135" y="70" font-family="DM Sans, sans-serif" font-size="38" font-weight="300" fill="#e8e6e1" letter-spacing="-0.03em">Fundaments<tspan fill="#c6f135">.work</tspan></text>
 </svg>

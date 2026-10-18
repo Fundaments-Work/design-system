@@ -385,7 +385,7 @@ retired.
    and `--accent-2`.
 5. ✅ Removed the unused `@fontsource` dependencies and stopped shipping
    the two variable font files.
-6. ⬜ Regenerate the brand exports in `brand/exports`, which are still
+6. ✅ Regenerated the brand exports in `brand/exports` from SVG sources in DM Sans; they were still
    rasterised in Inter.
 7. ⬜ Off-scale px literals remain — the scale is adopted in the tokens but
    a handful of component paddings still sit outside it.
