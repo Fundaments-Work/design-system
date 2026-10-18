@@ -32,11 +32,11 @@ brand/
 spacing, motion. Dark. Identical everywhere, never negotiated per
 product.
 
-**Accent** — one colour, one meaning. The only thing a product chooses.
+**Accent** — one colour, one meaning: acid lime. No product chooses its own.
 
 | Product | Accent |
 |---|---|
-| Theorem | Stone `#c8b89a` — reading progress |
+| Theorem | Acid lime `#c6f135` — the same accent as the lab |
 | Fundaments.work | Acid lime `#c6f135` — mark, one action |
 | Lemma | **Out of scope** — inherits Obsidian |
 
@@ -48,7 +48,7 @@ Light is a theme inside the system, not a rival to it.
 - Corner radius is `0`, on every element, without exception
 - DM Sans 300/400 for the interface, DM Mono 300/400 for data
 - Hierarchy from size and colour, never from extra weights
-- One accent per product, one meaning, always labelled
+- One accent for the whole lab, one meaning, always labelled
 - One mark height of clear space, for every mark
 - The credit line is `Made by Fundaments.work`, DM Mono, 0.35 × wordmark
 
@@ -61,7 +61,6 @@ become pointers here:
 
 - `Theorem/design.md`
 - `theorem-landing/design.md`
-- `Theorem/ds-bundle/guidelines/design.md`
 - `fundaments-social/01-brand-and-voice.md` (studio typeface section)
 
 Where this document and a codebase disagree, **the codebase is

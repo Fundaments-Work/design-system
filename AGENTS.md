@@ -7,7 +7,7 @@ build, no dependencies, no site.
 
 | File | What it is |
 | :--- | :--- |
-| [`tokens.md`](./tokens.md) | Token values: shared layer, then per-product values, then known drift |
+| [`tokens.md`](./tokens.md) | Token values: shared layer, then the product values, then known drift |
 | [`guidelines.md`](./guidelines.md) | The language: structure, marks, lockup, colour, type, rules, collaboration, decisions, adoption |
 | [`brand/`](./brand/README.md) | Official marks, badges and raster exports |
 | [`canvas.html`](./canvas.html) | The same system as a browsable 10-page document |
@@ -36,8 +36,8 @@ From `tokens.md`. These are not defaults to be negotiated per product:
   field, not the base.
 - **Corner radius `0`** on every element, without exception. Not a card, not a
   button, not an avatar, not a spinner.
-- **One accent per product, one meaning**: Theorem stone `#c8b89a`,
-  Fundaments.work acid lime `#c6f135`.
+- **One accent for the whole lab, one meaning**: acid lime `#c6f135`. No
+  product keeps its own.
 - **DM Sans / DM Mono at 300 and 400 only.** Hierarchy from size and colour,
   never from extra weights.
 - **Type is set at two weights, tracking is a token** (`--tracking-display`
@@ -51,7 +51,7 @@ From `tokens.md`. These are not defaults to be negotiated per product:
 
 | Product | Accent | Note |
 | :--- | :--- | :--- |
-| Theorem | stone `#c8b89a` | Reference implementation |
+| Theorem | acid lime `#c6f135` | Reference implementation |
 | fundaments-landing | acid lime `#c6f135` | Studio site |
 | theorem-landing | acid lime `#c6f135` | Adopts the shared base |
 | Lemma | **out of scope** | Runs inside Obsidian and must inherit its theme |

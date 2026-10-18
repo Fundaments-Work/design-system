@@ -16,16 +16,17 @@ Two layers, and the split is the whole idea:
 | Layer | Contains | Varies by product? |
 |---|---|---|
 | **Base** | Background, surface, text, hairline, radius, type, tracking, spacing, motion | Never |
-| **Accent** | One colour, one meaning | Always |
+| **Accent** | One colour, one meaning | Never. The lab has one accent: acid lime |
 
-A product adopts the system by taking the base unchanged and supplying
-one accent. Nothing else is negotiable per product.
+A product adopts the system by taking the base and the accent unchanged.
+Nothing is negotiable per product, and no product keeps a palette of its
+own.
 
 ### Products in scope
 
 | Product | Base | Accent |
 |---|---|---|
-| **Theorem** | shared (already ships it) | Stone `#c8b89a` |
+| **Theorem** | shared | Acid lime `#c6f135` |
 | **Fundaments.work** | shared | Acid lime `#c6f135` |
 | **Lemma** | Obsidian's theme variables | **Out of scope** |
 
@@ -65,7 +66,7 @@ Theorem's app already ships.
   --surface-hi: #28282c;
   --line:       #3d3d42;
   --text:       #e8e6e1;
-  --text-60:    #9a9a9a;
+  --text-60:    #a0a0a0;
 }
 ```
 
@@ -80,11 +81,11 @@ inside the gap you would get from rounding. Only the hairline genuinely
 diverged (`#282c22` vs `#3d3d42`), and Theorem's is adopted as the shared
 value: 1.72:1 on the base, enough for a decorative boundary.
 
-**Why the accent stays per-product.** An accent only works on the base
-it was chosen for. Lime `#c6f135` scores 14.16:1 on carbon and **1.24:1
-on paper** — unusable on a light surface, the same failure mode as Stone
-at 1.85:1. One base, per-product accent. The accent is the only thing a
-product gets to choose.
+**Why there is one accent.** Theorem used to keep Stone `#c8b89a` as a
+product accent. That was a second dialect, so it is retired: every product
+uses lime. An accent only works on the base it was chosen for. Lime
+`#c6f135` scores 14.16:1 on carbon and **1.24:1 on paper**, so a light
+theme sets the accent in a dark olive (`#4d6a00`) and never in lime.
 
 ### Radius
 
@@ -134,14 +135,13 @@ never decorates.
 
 ## Values — Theorem
 
-Theorem inherits the shared base and chooses Stone as its accent. Its
-dark theme already matches the shared base exactly, so the product needs
-no migration.
+Theorem takes the shared base and the shared accent unchanged. It adds
+only the six highlight colours, which are content.
 
 ```css
 :root {
-  --accent:        #c8b89a;   /* stone — reading progress only  */
-  --accent-ink:    #1a1a1a;   /* ink set on stone                */
+  --accent:        #c6f135;   /* lime — the one signal per frame */
+  --accent-ink:    #293500;   /* ink set on lime                 */
 
   --hl-thesis:        #fef08a;
   --hl-method:        #bae6fd;
@@ -152,11 +152,12 @@ no migration.
 }
 ```
 
-> **Accent mechanism.** Theorem's `--app-accent` defaults to `#000000`
-> and is user-selectable from eight presets. `computeAccentVariants()`
-> derives hover, light and contrast variants at runtime and enforces
-> 4.5:1 against the active background. This is the best mechanism in the
-> system; other products should copy it rather than hard-code an accent.
+> **Accent mechanism.** Theorem's `--app-accent` defaults to lime
+> `#c6f135`. The user can still pick another from the settings presets.
+> `computeAccentVariants()` derives hover, light and contrast variants at
+> runtime and enforces 4.5:1 against the active background. This is the
+> best mechanism in the system; other products should copy it rather than
+> hard-code an accent.
 
 ### Light theme
 
@@ -174,8 +175,10 @@ keeps its values and its name.
   --app-border:           #d4d3ce;   /* hairlines */
   --app-border-subtle:    #e2e1dd;
   --app-text-primary:     #1c1c1c;   /* text, mark */
-  --app-text-secondary:   #6b6b6b;   /* secondary text */
-  --app-text-muted:       #9c9c9c;   /* never text — see AA */
+  --app-text-secondary:   #5c5c5c;   /* secondary text, 6.4:1 on paper */
+  --app-text-muted:       #666666;   /* tertiary text, 5.5:1 on paper */
+  --app-text-disabled:    #9c9c9c;   /* disabled only — fails AA */
+  --app-border-strong:    #8c8c88;   /* form-control boundary, 3.2:1 */
   --app-text-inverse:     #ffffff;
 }
 ```
@@ -197,13 +200,15 @@ recorded for reference rather than as a separate palette.
   --app-border:           #3d3d42;   /* hairlines */
   --app-border-subtle:    #323236;
   --app-text-primary:     #e8e6e1;   /* text, mark */
-  --app-text-secondary:   #9a9a9a;   /* secondary text */
-  --app-text-muted:       #7a7a7a;   /* tertiary text */
+  --app-text-secondary:   #a0a0a0;   /* secondary text, 7.0:1 */
+  --app-text-muted:       #929292;   /* tertiary text, 5.9:1 */
+  --app-text-disabled:    #7a7a7a;   /* disabled only — 4.3:1 */
+  --app-border-strong:    #6a6a70;   /* form-control boundary, 3.4:1 */
   --app-text-inverse:     #141416;
 }
 ```
 
-Stone is the same in both themes.
+The accent is derived per theme: lime on dark, a dark olive on light.
 
 ### Contrast
 
@@ -212,21 +217,30 @@ Recomputed against these values, not the marketing page's greys.
 | Pair | Ratio | |
 |---|---|---|
 | Ink on Paper | 16.20:1 | AAA |
-| Ink 60 on Paper | 5.06:1 | AA |
-| Ink muted on Paper | **2.61:1** | **Fails AA** |
+| Ink 60 on Paper | 6.36:1 | AA |
+| Ink muted on Paper | 5.46:1 | AA |
+| Ink disabled on Paper | **2.61:1** | **Fails AA** |
 | Dark text on Night | 14.75:1 | AAA |
-| Dark muted on Night | 6.54:1 | AA |
-| Stone on Night | 9.44:1 | AAA |
-| **Stone on Paper** | **1.85:1** | **Fails AA** |
+| Dark secondary on Night | 7.04:1 | AAA |
+| Dark muted on Night | 5.91:1 | AA |
+| Dark disabled on Night | **4.29:1** | **Fails AA** |
+| Control border on Night | 3.42:1 | 3:1 for UI |
+| Control border on Paper | 3.21:1 | 3:1 for UI |
+| Lime on Night | 14.16:1 | AAA |
+| **Lime on Paper** | **1.24:1** | **Fails AA** |
 
 Two rules follow, and both are enforced in the code:
 
-**Ink muted is never text.** At 2.61:1 it cannot carry meaning. It is for
-disabled states and decorative rules only. Theorem's own components use
-`--app-text-secondary` for anything a reader must be able to read.
+**Disabled is never text a reader needs.** `--app-text-disabled` is for
+disabled states and decorative rules only. Secondary and muted text were
+raised to clear 4.5:1 on every surface, because the apps use muted as real
+text in about 300 places. Form-control boundaries use `--app-border-strong`
+(3:1); the 1.7:1 hairline is decorative and never the only cue for a
+control.
 
-**Stone is never text on a light surface.** At 1.85:1 it fails outright.
-Wherever Stone appears it carries a DM Mono label beside it.
+**Lime is never text on a light surface.** At 1.24:1 it fails outright.
+On light, the accent is set in dark olive, and wherever it appears it
+carries a DM Mono label beside it.
 
 ---
 
@@ -271,12 +285,12 @@ prefix-by-product workaround is no longer needed.**
 
 ## State colour
 
-Each product has exactly **one** accent and exactly **one** meaning for
-it. It is not decorative and it is never a second accent.
+The lab has exactly **one** accent and exactly **one** meaning for it:
+the one signal per frame. It marks where you are (the open item's edge,
+the focus ring, the selection), the progress, or the single action. It is
+not decorative and it is never a second accent.
 
-- **Theorem** — Stone `#c8b89a`, reading progress only.
-- **Fundaments.work** — Acid lime `#c6f135`, the mark and one action per
-  view.
+- **Theorem** and **Fundaments.work** — Acid lime `#c6f135`.
 - **Lemma** — none in-app. Obsidian owns its accent.
 
 State colour is always paired with a text label. Never state by colour
@@ -352,8 +366,11 @@ No build step is required. Read the values above and apply them.
 
 ### Theorem
 
-Already compliant. Its dark theme is the shared base, so there is nothing
-to migrate. Its light theme stays as a theme override.
+**Done.** One base, one accent: dark is the default, lime is the default
+accent, weights are 300 and 400, DM Sans and DM Mono ship with the app, and
+the sidebar is a fixed rail. The reader keeps its serif for book content,
+which is content and not interface. Its own UI kit and guidelines are
+retired.
 
 ### Fundaments.work
 
@@ -379,8 +396,8 @@ The base itself needed no change — the lab was already on carbon, within
 ### theorem-landing
 
 **Done.** Adopted in `theorem-landing`: shared base, DM Sans/DM Mono, two
-weights, shared motion tokens, and the highlight and selection fixes
-below.
+weights, shared motion tokens, the lab's lime accent, and the highlight and
+selection fixes below.
 
 ### Lemma
 
@@ -389,9 +406,8 @@ Fundaments.work values above like any other lab page.
 
 ### Theorem — pointers
 
-`design.md` in Theorem, in `theorem-landing`, and in `ds-bundle/guidelines/`
-are three revisions of the same document that disagree. Replace all three
-with a pointer to this repository.
+`design.md` in Theorem and in `theorem-landing` are pointers to this
+repository. Theorem's `ds-bundle/` UI kit is retired.
 
 ---
 

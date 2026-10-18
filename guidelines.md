@@ -33,7 +33,7 @@ product chooses only its mark, one state colour and its name.
 | Product | Descriptor | State colour | Default theme |
 |---|---|---|---|
 | Fundaments.work | The lab | Acid lime | Dark (Carbon) |
-| Theorem | Reading | Stone, reading progress | Light |
+| Theorem | Reading | Acid lime | Dark |
 | Lemma | Flashcards, spaced repetition | None in-app — Obsidian owns it | Inherits Obsidian |
 
 The lab site keeps carbon, lime and the system. That question is settled:
@@ -98,7 +98,7 @@ each time.
 
 ## 4 · Colour
 
-Ink and paper carry everything. Stone reports state only. The six
+Ink and paper carry everything. Lime reports state only. The six
 highlight colours each carry one meaning, so exported notes stay
 consistent.
 
@@ -115,7 +115,8 @@ palette.
 | Hover | `#454549` | Hover |
 | Line | `#3d3d42` | Hairlines |
 | Text | `#e8e6e1` | Text, mark |
-| Muted | `#9a9a9a` | Secondary text |
+| Secondary | `#a0a0a0` | Secondary text, 7.0:1 |
+| Muted | `#929292` | Tertiary text, 5.9:1 |
 
 ### Light theme
 
@@ -128,15 +129,16 @@ override keeps its warm neutral.
 | Surface | `#f4f3f0` | Panels |
 | Line | `#d4d3ce` | Hairlines |
 | Ink | `#1c1c1c` | Text, mark |
-| Ink 60 | `#6b6b6b` | Secondary text |
-| Ink muted | `#9c9c9c` | Disabled only — fails AA |
+| Ink 60 | `#5c5c5c` | Secondary text, 6.4:1 |
+| Ink muted | `#666666` | Tertiary text, 5.5:1 |
+| Ink disabled | `#9c9c9c` | Disabled only — fails AA |
 
 ### Accent
 
 | Product | Accent | Meaning |
 |---|---|---|
-| Theorem | Stone `#c8b89a` | Reading progress only |
-| Fundaments.work | Acid lime `#c6f135` | Mark, one action per view |
+| Theorem | Acid lime `#c6f135` | One signal per frame |
+| Fundaments.work | Acid lime `#c6f135` | One signal per frame: the mark, the open item, the single action |
 | Lemma | none | Obsidian owns it |
 
 ### Highlight taxonomy
@@ -157,25 +159,25 @@ override keeps its warm neutral.
 | Text on base | 14.75:1 | AAA |
 | Muted on base | 6.54:1 | AA |
 | **Lime on base** | **14.16:1** | AAA |
-| **Stone on base** | **9.44:1** | AAA |
 | Line on base | 1.72:1 | decorative |
 | Ink on Paper | 16.20:1 | AAA |
-| Ink 60 on Paper | 5.06:1 | AA |
-| Ink muted on Paper | 2.61:1 | **Fails AA** |
+| Ink 60 on Paper | 6.36:1 | AA |
+| Ink muted on Paper | 5.46:1 | AA |
+| Ink disabled on Paper | 2.61:1 | **Fails AA** |
 | **Lime on Paper** | **1.24:1** | **Fails AA** |
-| **Stone on Paper** | **1.85:1** | **Fails AA** |
 
 Three rules, all load-bearing:
 
-**Accents never cross onto the light base.** Lime scores 1.24:1 and Stone
-1.85:1 on paper. Both are dark-base accents. A light theme must use an
-accent chosen for it, or none.
+**The accent never crosses onto the light base.** Lime scores 1.24:1 on
+paper. A light theme must use an accent chosen for it, a dark olive, or
+none.
 
-**Ink muted is never text.** It cannot carry meaning at 2.61:1. Use Ink 60
-for anything a reader must be able to read.
+**Disabled is never readable text.** It cannot carry meaning at 2.61:1.
+Secondary and muted both clear 4.5:1 on every surface. Control boundaries
+use the strong border at 3:1, not the decorative hairline.
 
-**Stone is never text.** On the base it passes; it still always carries a
-mono label, because state is never colour alone.
+**Lime is never body text.** On the base it passes; it still always carries
+a mono label, because state is never colour alone.
 
 ### Fundaments.work
 
@@ -218,7 +220,8 @@ Short enough to remember.
 - Round any corner, anywhere
 - Rotate, skew or outline the mark
 - Bold the wordmark; use size instead
-- Use Stone for anything but state
+- Use lime for anything but state, or two lime signals in one frame
+- Give an icon button a box or a hover background; it is a bare icon, and hover is the accent colour
 - Place a mark on gradients, photos or shadows
 - Type a mark as characters; use the SVG
 
@@ -293,7 +296,10 @@ Settled. Recorded here so the reasoning survives, not just the outcome.
 | Mono typeface | JetBrains Mono and DM Mono | DM Mono everywhere | One data face across the lab |
 | Sans typeface | Inter | DM Sans, 300 and 400 | Hierarchy from size and colour, not weight |
 | Dark theme | Not defined | Theorem's shipped dark values | The app is what users see |
-| State colour | Stone for reading progress only | One state colour per product, one meaning | Colour alone never carries state |
+| State colour | Stone for reading progress only | One accent for the lab, one meaning | Colour alone never carries state |
+| Product accents | Theorem Stone, lab lime | Lime everywhere | Two accents were a second dialect |
+| Navigation | Collapsible sidebar with labels | Fixed 48px rail, icons only, tooltips, 2px accent edge on the open item | The open item is a signal, not a drawer |
+| Icon buttons | Bordered box with hover background | Bare icon, no box and no fill; hover is the accent colour | Depth is by tonal step, not by hover fill |
 | Credit line | Set per site, lowercase on Theorem | One spec: Fundaments.work, DM Mono, 0.35 × wordmark | Repeated identically everywhere |
 | Clear space | Mark height, or nucleus diameter | One mark height for every mark | One rule, not two |
 | Lemma | Inherits Obsidian by accident | Out of scope, inherits Obsidian by decision | It runs inside someone else's app |
@@ -324,9 +330,9 @@ an edit.
 
 ### Theorem
 
-Already compliant. Its token names are the system's names, and its
-dark theme is the reference. Replace its three `design.md` copies with a
-pointer to this repository, and settle the highlight labels in
+On the system. Dark is the default, lime is the default accent, the
+sidebar is a fixed rail, and weights are 300 and 400. Its `design.md` is a
+pointer to this repository. Still open: settle the highlight labels in
 `design-tokens.ts`.
 
 ### Fundaments.work
@@ -343,6 +349,5 @@ lab's tokens like any other lab page.
 
 ### Theorem's copies
 
-Replace `design.md` in `theorem-landing` and in
-`Theorem/ds-bundle/guidelines/` with a pointer here. Both are stale
-revisions that disagree with each other and with the app.
+`design.md` in `Theorem` and in `theorem-landing` are pointers here. The
+`ds-bundle/` UI kit is retired.
