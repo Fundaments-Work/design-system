@@ -426,9 +426,10 @@ Recorded so it is not rediscovered later. None of it is fixed yet.
 | `brand/exports/*.png` | Still rasterised in Inter. Regenerate from the DM Sans lockup |
 | `brand/marks/favicon.svg`, `fundaments-logo.svg`, `fundaments-lockup.svg`, `fundaments-mark-carbon.svg` | Their field is Carbon `#12140f`, which no longer matches any token. The base is `#141416` and the recessed step is `#0d0f0a`. Found while vendoring these files into nepali-wordle; the files themselves are otherwise canonical |
 | `brand/exports/avatar-*.png`, `banner-*.png` | Same Inter rasterisation as above |
-| `brand/marks/theorem-logo.svg` | Fill `#0a0a0a`; the token is `#1c1c1c` |
-| `brand/marks/theorem-app-icon.svg` | Fill `#0a0a0a`, and `rx="100"` — the only rounded corner in the brand kit |
-| `brand/badges/fundaments-badge.svg` | Field `#1e221b`; no token matches it (nearest is `#1e201b`) |
+| `brand/marks/theorem-logo.svg` | **Fixed.** Was fill `#0a0a0a`; now `#1c1c1c` |
+| `brand/marks/theorem-app-icon.svg` | **Fixed.** Was fill `#0a0a0a` with `rx="100"`; now `#141416` / `#e8e6e1` at radius 0 |
+| `brand/badges/fundaments-badge.svg` | **Fixed.** Field was `#1e221b`; now `#0d0f0a`, the recessed step |
+| `theorem-landing/brand` page colours | **Fixed.** The page hardcoded hexes and drifted: it documented a `#7a7a7a` "Disabled" grey that is not a token there, and never mentioned `--color-recessed`, which paints several sections. Swatches are now parsed out of `src/styles/global.css` at build time (`src/lib/tokens.ts`), so a token cannot be missing or stale |
 | `fundaments-landing` spacing | A handful of component paddings still sit off the 4px scale |
 | `Lemma/styles.css` | Four hardcoded Tailwind hexes in swipe shadows that contradict the rating colours — Easy swipes blue but rates cyan |
 | `Lemma/src/ui/StatsModal.ts` | Chart.js is handed raw `var(--interactive-accent)` strings; canvas cannot resolve `var()`, so charts fall back to defaults |
