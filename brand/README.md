@@ -72,6 +72,17 @@ SVG whenever the SVG changes; never edit a PNG by hand.
 - `exports/banner-{x-1500x500,linkedin-1584x396,facebook-820x312}.png` from the matching `.svg`
 - `exports/avatar-{128,200,320,400,512,800,1024}.png` from `marks/fundaments-logo.svg`
 
+### Missing, specified in the guidelines
+
+Not yet produced. Each is derived from an existing SVG; do not hand-draw them.
+
+| Asset | Size | Rule |
+|---|---|---|
+| GitHub social preview | 1280 × 640 PNG, under 1 MB | [Guidelines 21](../guidelines.md#21--readmes-badges-and-github-repositories) |
+| Email header | 1200 × 400 PNG (shown at 600 wide) | [Guidelines 26](../guidelines.md#26--email) |
+| App-icon master, lab | 1024 × 1024 SVG, square | [Guidelines 23](../guidelines.md#23--app-icons-and-installers) |
+| Monochrome mark | transparent, single colour | Guidelines 23 |
+
 ---
 
 ## Known drift in these files
@@ -85,3 +96,5 @@ Recorded so it is not rediscovered.
 | `fundaments-badge.svg`, `telemetry-badge.svg` | **Fixed.** The telemetry field is now the Surface token `#1c1c20` (was `#1e221b`, which matched no token). |
 | `fundaments-lockup.svg` | **Fixed.** Set in DM Sans 300 on Ink (was Inter 600 on white). |
 | `exports/*.png` | **Fixed.** Re-rendered from SVG sources in DM Sans and DM Mono. |
+| `theorem-brand.zip` | Not served by fundaments.work; contents not checked against `marks/`. |
+| `fundaments-brand.zip` | The copy in `fundaments-landing/public/brand/` differs byte for byte from this one. |
