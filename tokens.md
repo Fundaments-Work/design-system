@@ -266,6 +266,34 @@ dimensions to start from.
 | Window | 1280 × 820 default, 640 × 480 minimum, no native frame |
 | Reading column (Zen) | 680px |
 
+### Component dimensions
+
+Sizes the rules in [`guidelines.md`](./guidelines.md) use. Status says whether
+a product already ships it.
+
+| Part | Value | Status |
+|---|---|---|
+| Web button | 48px high, 15px Sans 300, 22px side padding | shipped |
+| Web field | 40px high, 15px text | **new** (the site's field is 14px with 10px padding) |
+| Desktop field | 28px high, 13px text | **new** |
+| List and tree row, desktop | 24px | **new** |
+| Menu row, desktop | 28px | **new** |
+| Primary row, desktop | 40px | shipped (top bar) |
+| Table cell | `8px 12px`; dense `4px 8px` | shipped; **new** |
+| Code block padding | `12px 16px` | **new** |
+| Dialog width | 360–560px | **new** |
+| Scrim | `rgb(0 0 0 / 0.78)`, no blur | shipped colour; **new** no blur |
+| Toast | 320px wide, 6s, bottom end | **new** |
+| Tooltip delay | 500ms on hover, none on focus | **new** |
+| Success message | 4s | **new** |
+| Copy feedback | 2s | **new** |
+| Progress rule | 2px accent line | **new** |
+| Splitter | 1px line, 6px hit area | **new** |
+| Chart line | 2px, square joins | **new** |
+| Chart point | 6px square | **new** |
+| Collapse a code block | beyond 40 lines | **new** |
+| Screenshot weight | under 300 KB where the content allows | **new** |
+
 ### Icons
 
 | Property | Value | Status |
@@ -659,6 +687,8 @@ Recorded so it is not rediscovered later. Rows marked **Fixed** are closed; the 
 | `brand/theorem-brand.zip` | Exists here, is not served by fundaments.work (only `fundaments-brand.zip` is), and its contents have not been checked against `brand/marks` |
 | `brand/exports` GitHub social preview | There is no 1280 × 640 export; repositories use the 1200 × 630 card, which GitHub crops |
 | `public/brand/fundaments-brand.zip` in `fundaments-landing` | Differs byte for byte from `brand/fundaments-brand.zip` here; the loose files under `public/brand/` match the originals. Nothing checks the zip |
+| `fundaments-landing` modal | `.modal` uses `backdrop-filter: blur(6px)` and `.modal-card` a hard `12px 12px 0` shadow. The system has no blur and no shadows; the guidelines now say dialogs have neither |
+| `fundaments-landing` docs code colours | The theme draws the code surface and border from tokens, but syntax token colours are Expressive Code's default theme. They should be the roles in Syntax colour |
 | `fundaments-landing` spacing | A handful of component paddings still sit off the 4px scale |
 | `Lemma/styles.css` | Four hardcoded Tailwind hexes in swipe shadows that contradict the rating colours — Easy swipes blue but rates cyan |
 | `Lemma/src/ui/StatsModal.ts` | Chart.js is handed raw `var(--interactive-accent)` strings; canvas cannot resolve `var()`, so charts fall back to defaults |
