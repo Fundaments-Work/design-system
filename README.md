@@ -9,7 +9,7 @@ and docs sites, desktop apps, Obsidian plugins, terminal output and install
 scripts, READMEs and repositories, release notes, app icons and installers,
 screenshots, charts, forms, email, and a checklist for adding a product.
 
-Read it on the docs site at
+This repository is published at
 [fundaments.work/docs/design-system](https://fundaments.work/docs/design-system/).
 It is reference material, not a product.
 
