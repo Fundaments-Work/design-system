@@ -694,7 +694,7 @@ Recorded so it is not rediscovered later. Rows marked **Fixed** are closed; the 
 | `Lemma/src/ui/StatsModal.ts` | Chart.js is handed raw `var(--interactive-accent)` strings; canvas cannot resolve `var()`, so charts fall back to defaults |
 | `Theorem` highlight labels | Runtime says Important/Key Idea/Interesting/Critical/Action/Beautiful; the system says the six meanings above |
 | `fundaments-landing/README.md`, `theorem-landing/README.md` | **Fixed.** Both documented Hugo after the Astro port — wrong generator, wrong output dir (`public` vs `dist`), a Hugo template snippet for the changelog fetch, and `[params.support]` references. Both now describe Astro, `src/site.ts`, and `src/lib/releases.ts` |
-| Support channel URLs | **Fixed.** The Buy Me Momo URL was written out in six places. They now live once in [`Fundaments-Work/content`](https://github.com/Fundaments-Work/content) → `support.json`; the landing sites generate from it, and Theorem and Lemma hold a literal guarded by `pnpm check:content` |
+| Support channel URLs | **Open.** The `content` repo that held them once was retired in October 2026. Each landing site now owns `data/support-channels.json`, Theorem and Lemma hold literals, and nothing checks them against each other. Every place the Buy Me Momo URL appears is listed in the handbook note `Brand/Support channels` |
 | Brand assets in product repos | Not yet centralised. `og-fundaments-1200x630.png`, `og-theorem-1200x630.png` and the favicons are vendored copies of `brand/exports/` and `brand/marks/`; nothing checks them against the originals |
 
 ## Adoption status

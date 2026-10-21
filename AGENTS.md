@@ -130,8 +130,5 @@ with `pnpm sync:docs`. Write for that:
 
 ## Related repos
 
-- [`Fundaments-Work/content`](../content) — shared machine-readable facts across
-  products (support channels today). Unrelated to visual design; do not put
-  tokens there.
 - `Theorem/design.md` and `theorem-landing/design.md` are pointers to this
   repository, not independent copies. Do not edit them as if they were.

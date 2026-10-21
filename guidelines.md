@@ -1109,7 +1109,7 @@ the product; do not write "private" or "offline" for something that is not.
 
 | Setting | Rule |
 |---|---|
-| Name | Product name as written; lower-case kebab for non-product repos (`design-system`, `content`) |
+| Name | Product name as written; lower-case kebab for non-product repos (`design-system`, `fundaments-landing`) |
 | Description | One sentence under 100 characters, sentence case, no full stop needed, no emoji |
 | Website | The product's docs or site, never a placeholder |
 | Topics | Lower-case, hyphenated: the category (`latex`, `typst`, `ebook-reader`), the platform (`tauri`, `obsidian-plugin`), and `local-first` or `open-source` where true. Up to 12 |
