@@ -52,13 +52,15 @@ the lab's palette is a value set, and the system is the layer above it.
 ## 2 · Marks
 
 Drawn from geometry. Theorem is rectangles on a 24-unit grid. The lab's
-aperture is two brackets and a point on a 512 grid. Corner radius is 0 for
+mark is an F and a proof square on a 512 grid. Corner radius is 0 for
 both, and no mark is typed, rotated, skewed or outlined.
 
 - **Theorem** — bar 16 × 4, stem 4 × 8, foot 4 × 4. The foot is the
   square that closes a proof.
-- **Fundaments.work** — aperture, 512 grid, spine 52, arm 112, nucleus
-  r 44. The official SVG governs; the values here are for reference.
+- **Fundaments.work** — an F with no middle arm, stem and cap 48 thick, and
+  a lime 48 square where the middle arm would end: the proof is the part the
+  letter is missing. Construction hairlines cross at the square's centre.
+  512 grid. The official SVG governs; the values here are for reference.
 
 ### Clear space
 
@@ -515,7 +517,7 @@ One icon family, drawn from the same shapes as the marks.
   word.
 - **Emoji are not icons.** Do not use them in a product, a README or release
   notes.
-- **The mark is not an icon.** Do not use the aperture or the turnstile as a
+- **The mark is not an icon.** Do not use the lab's F or the turnstile as a
   bullet, a loading spinner or a decoration.
 
 ---
@@ -1198,14 +1200,15 @@ form; never copy them.)*
 
 - **Master**: a 1024 × 1024 square SVG on the base `#141416`. No rounded corners
   and no gradient, shadow, glow or bevel. The product mark is centred in
-  `#e8e6e1`; the lab's aperture is lime. The lab's own icon keeps carbon
-  `#12140f` until the drift row is closed.
+  `#e8e6e1`; the lab's F is `#e8e6e1` with its square in lime.
 - **Safe area**: the mark's bounding box is centred and measures 50% of the
   width for a new product. Theorem's turnstile is drawn at 33.3% and the lab's
-  aperture at 62.5%; both stay as drawn. Nothing else sits in the icon.
+  F at 56.25% of the height; both stay as drawn. Nothing else sits in the icon.
 - **Never** put the wordmark, the credit line or a badge in an app icon.
 - **One mark, every size.** Do not draw a simpler mark for small sizes. Below
-  16px the mark is not used; the favicon is the smallest mark.
+  16px the mark is not used; the favicon is the smallest mark. The lab's
+  construction hairlines are not part of the mark: they are drawn at 64px and
+  above and left out below, with nothing else changed.
 - **Platform masks.** iOS and Android apply their own masks. Supply a full-bleed
   square and let the platform cut it. The corners the user sees are the
   platform's, not ours.
@@ -1415,7 +1418,7 @@ Settled. Recorded here so the reasoning survives, not just the outcome.
 | Navigation | Collapsible sidebar with labels | Fixed 48px rail, icons only, tooltips, 2px accent edge on the open item | The open item is a signal, not a drawer |
 | Icon buttons | Bordered box with hover background | Bare icon, no box and no fill; hover is the accent colour | Depth is by tonal step, not by hover fill |
 | Credit line | Set per site, lowercase on Theorem | One spec: Fundaments.work, DM Mono, 0.35 × wordmark | Repeated identically everywhere |
-| Clear space | Mark height, or nucleus diameter | One mark height for every mark | One rule, not two |
+| Clear space | Mark height, or the old aperture's nucleus diameter | One mark height for every mark | One rule, not two |
 | Lemma | Inherits Obsidian by accident | Out of scope, inherits Obsidian by decision | It runs inside someone else's app |
 | Collaboration terms | Badges only | Allowed, ask first, not permitted | Third parties need to know the boundary |
 | Surfaces | Marks, colour and type only | Rules for sites, docs, apps, plugins, CLI, repos, releases, icons, screenshots, charts, email and new products | Every thing the lab ships needs one answer, not a guess |

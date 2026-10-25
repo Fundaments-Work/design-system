@@ -29,7 +29,7 @@ It is reference material, not a product.
 
 ```
 brand/
-  marks/    8 SVGs — lab aperture, Theorem turnstile, lockups, favicon
+  marks/    9 SVGs — lab mark (F and proof square), Theorem turnstile, lockups, favicon
   badges/   4 SVGs — Built with, Zero Telemetry, Read on Theorem, Syncs to Obsidian
   exports/  12 raster derivatives — OG, banners, avatars, Theorem social
 ```

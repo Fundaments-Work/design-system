@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="820" height="312" viewBox="0 0 820 312" role="img" aria-label="Fundaments.work">
   <rect width="820" height="312" fill="#141416"/>
-  <g transform="translate(50.34 71.14) scale(0.33150)"><path d="M208 96H96V416H208V364H148V148H208Z" fill="#c6f135"/><circle cx="256" cy="256" r="44" fill="#c6f135"/><path d="M304 96H416V416H304V364H364V148H304Z" fill="#c6f135"/></g>
-  <text x="241.28" y="179.02" font-family="DM Sans" font-size="65.77" font-weight="300" fill="#e8e6e1" letter-spacing="-1.97">Fundaments<tspan fill="#c6f135">.work</tspan></text>
+  <g transform="translate(50.34 71.14) scale(0.33150)"><rect x="64" y="255" width="384" height="2" fill="#28282c"/><rect x="263" y="64" width="2" height="384" fill="#28282c"/><rect x="192" y="255" width="144" height="2" fill="#7a7a7a"/><path d="M144 112H368V160H192V400H144Z" fill="#e8e6e1"/><rect x="240" y="232" width="48" height="48" fill="#c6f135"/></g>
+  <text x="241.28" y="179.02" font-family="DM Sans" font-size="65.77" font-weight="300" fill="#e8e6e1" letter-spacing="-1.97">Fundaments<tspan fill="#7a7a7a">.work</tspan></text>
 </svg>

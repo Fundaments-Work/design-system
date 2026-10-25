@@ -32,8 +32,8 @@ system is meant to prevent, in which case fix both and say so.
 
 From `tokens.md`. These are not defaults to be negotiated per product:
 
-- **One dark base**: `#141416`. Never negotiated. Carbon `#12140f` is the mark
-  field, not the base.
+- **One dark base**: `#141416`. Never negotiated. It is also the field behind
+  every mark; Carbon `#12140f` is retired.
 - **Corner radius `0`** on every element, without exception. Not a card, not a
   button, not an avatar, not a spinner.
 - **One accent for the whole lab, one meaning**: acid lime `#c6f135`. No

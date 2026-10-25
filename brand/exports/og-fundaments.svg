@@ -9,14 +9,12 @@
   <!-- clear space: exactly one mark height, drawn. Box is 3x the mark. -->
   <rect x="93" y="118" width="394" height="394" fill="none" stroke="#7a7a7a" stroke-width="1" stroke-dasharray="4 6"/>
 
-  <!-- the aperture, 512 grid, centred in the well at x=290 -->
+  <!-- the mark, 512 grid, centred in the well at x=290 -->
   <g transform="translate(185 210) scale(0.41)">
-    <path d="M208 96H96V416H208V364H148V148H208Z" fill="#c6f135"/>
-    <circle cx="256" cy="256" r="44" fill="#c6f135"/>
-    <path d="M304 96H416V416H304V364H364V148H304Z" fill="#c6f135"/>
+    <rect x="64" y="255" width="384" height="2" fill="#28282c"/><rect x="263" y="64" width="2" height="384" fill="#28282c"/><rect x="192" y="255" width="144" height="2" fill="#7a7a7a"/><path d="M144 112H368V160H192V400H144Z" fill="#e8e6e1"/><rect x="240" y="232" width="48" height="48" fill="#c6f135"/>
   </g>
 
-  <text x="540" y="246" font-family="DM Sans" font-size="68" font-weight="300" fill="#e8e6e1" letter-spacing="-2.3">Fundaments<tspan fill="#c6f135">.work</tspan></text>
+  <text x="540" y="246" font-family="DM Sans" font-size="68" font-weight="300" fill="#e8e6e1" letter-spacing="-2.3">Fundaments<tspan fill="#7a7a7a">.work</tspan></text>
 
   <text x="543" y="298" font-family="DM Mono" font-size="20" fill="#9a9a9a" letter-spacing="0.4">an independent lab</text>
 
@@ -25,5 +23,5 @@
   <text x="540" y="404" font-family="DM Sans" font-size="26" font-weight="300" fill="#e8e6e1" letter-spacing="-0.4">Durable, private tools for</text>
   <text x="540" y="440" font-family="DM Sans" font-size="26" font-weight="300" fill="#e8e6e1" letter-spacing="-0.4">reading, note-taking and synthesis.</text>
 
-  <text x="540" y="504" font-family="DM Mono" font-size="18" fill="#c6f135">Theorem · Lemma</text>
+  <text x="540" y="504" font-family="DM Mono" font-size="18" fill="#a0a0a0">Theorem · Lemma</text>
 </svg>

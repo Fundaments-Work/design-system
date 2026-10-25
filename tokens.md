@@ -371,12 +371,12 @@ is not `dumb`. 24-bit colour is written only when `COLORTERM` is `truecolor` or
 | Property | Value | Status |
 |---|---|---|
 | Master | 1024 × 1024 SVG, square, no corner rounding | **new** as a rule |
-| Field | base `#141416`; the lab's own icon keeps carbon `#12140f` until the drift row is closed | shipped |
-| Mark | centred, `#e8e6e1`; the lab's aperture in lime | shipped |
-| Mark box, as share of canvas width | 33.3% (Theorem), 62.5% (the lab), 50% for any new product | shipped, shipped, **new** |
+| Field | base `#141416` for every icon, the lab's included | shipped |
+| Mark | centred, `#e8e6e1`; the lab's proof square in lime | shipped |
+| Mark box, as share of canvas | 33.3% of the width (Theorem), 56.25% of the height (the lab), 50% for any new product | shipped, shipped, **new** |
 | Android adaptive foreground | mark box at most 43% of the 108dp layer | **new** |
 
-The 43% figure is computed, not chosen: the aperture's corner sits √2 times
+The 43% figure is computed, not chosen: a square mark box's corner sits √2 times
 half the box width from the centre, and the adaptive safe circle is 66dp of
 108dp, so the box side is at most 0.43 of the canvas.
 
@@ -672,9 +672,9 @@ Recorded so it is not rediscovered later. Rows marked **Fixed** are closed; the 
 | `fundaments-landing` palette + type + motion | **Fixed.** Adopted the shared base, DM Sans/Mono, two weights, shared motion |
 | `Theorem/design.md`, `theorem-landing/design.md` | **Fixed.** Both are pointers to this repository now. `Theorem/ds-bundle/guidelines/design.md` is gitignored and regenerates from `Theorem/design.md` |
 | `fundaments-social/01-brand-and-voice.md` | **Fixed.** Typeface section updated to DM Sans/DM Mono |
-| `brand/exports/*.png` | Still rasterised in Inter. Regenerate from the DM Sans lockup |
-| `brand/marks/favicon.svg`, `fundaments-logo.svg`, `fundaments-lockup.svg`, `fundaments-mark-carbon.svg` | Their field is Carbon `#12140f`, which no longer matches any token. The base is `#141416` and the recessed step is `#0d0f0a`. Found while vendoring these files into nepali-wordle; the files themselves are otherwise canonical |
-| `brand/exports/avatar-*.png`, `banner-*.png` | Same Inter rasterisation as above |
+| `brand/exports/*.png` | **Fixed.** Re-rendered in DM Sans with the new lab mark |
+| `brand/marks/favicon.svg`, `fundaments-logo.svg`, `fundaments-lockup.svg`, `fundaments-mark-carbon.svg` | **Fixed.** The field was Carbon `#12140f`, which matched no token. Redrawn with the new lab mark on the base `#141416` |
+| `brand/exports/avatar-*.png`, `banner-*.png` | **Fixed.** Same as above |
 | `brand/marks/theorem-logo.svg` | **Fixed.** Was fill `#0a0a0a`; now `#1c1c1c` |
 | `brand/marks/theorem-app-icon.svg` | **Fixed.** Was fill `#0a0a0a` with `rx="100"`; now `#141416` / `#e8e6e1` at radius 0 |
 | `brand/badges/fundaments-badge.svg` | **Fixed.** Field was `#1e221b`; now `#0d0f0a`, the recessed step |
